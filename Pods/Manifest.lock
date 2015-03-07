@@ -1,0 +1,19 @@
+PODS:
+  - AVOSCloud (2.6.10.2)
+  - M80AttributedLabel (1.3.1)
+  - SVPullToRefresh (0.4.1)
+  - XLForm (2.1.0)
+
+DEPENDENCIES:
+  - AVOSCloud
+  - M80AttributedLabel
+  - SVPullToRefresh
+  - XLForm
+
+SPEC CHECKSUMS:
+  AVOSCloud: 903429163bce9feabb4473ab07ea30ed47ba5db1
+  M80AttributedLabel: a7349efb9dda1fcfe08695d05e3b180cab91d160
+  SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
+  XLForm: 7d6855fe88df37b44ea00da80cc0cf3a945cfb1b
+
+COCOAPODS: 0.35.0

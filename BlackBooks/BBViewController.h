@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RNFrostedSidebar.h"
-@interface BBViewController : UITableViewController<RNFrostedSidebarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface BBViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
 
 @end

@@ -26,6 +26,7 @@
 #import "XLForm.h"
 #import "BBAddBookViewController.h"
 #import "BBBook.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 NSString *const kName = @"bookname";
 NSString *const kAuthor = @"author";
@@ -46,6 +47,7 @@ NSString *const kStory = @"story";
 @property (nonatomic) XLFormRowDescriptor *contactRow;
 @property (nonatomic) XLFormRowDescriptor *storyRow;
 @property (nonatomic) XLFormRowDescriptor *photoRow;
+@property (nonatomic) AVFile *photoFile;
 
 @end
 
@@ -84,16 +86,20 @@ NSString *const kStory = @"story";
     _originalPriceRow.required = YES;
     [section addFormRow:_originalPriceRow];
     
-    _situationRow = [XLFormRowDescriptor formRowDescriptorWithTag: kSituation rowType:XLFormRowDescriptorTypeSelectorPush title:@"的状态"];
-    _situationRow.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"全新"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"刚看完"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:@"有点破"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(3) displayText:@"读书破万卷了"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(4) displayText:@"全套都在呢"]
+    _situationRow = [XLFormRowDescriptor formRowDescriptorWithTag:kSituation rowType:XLFormRowDescriptorTypeSelectorActionSheet title:@"当前状态"];
+    _situationRow.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"全新刚买没翻过"],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"刚看完了"],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:@"有些笔记"],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@(3) displayText:@"已经破万卷"],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@(4) displayText:@"吃了很久灰"]
                             ];
-    _situationRow.value = [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"刚看完"];
+    _situationRow.value = [XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"全新刚买没翻过"];
     [section addFormRow:_situationRow];
     
+    _photoRow = [XLFormRowDescriptor formRowDescriptorWithTag:kPhoto rowType:XLFormRowDescriptorTypeButton title:@"添加照片"];
+    [_photoRow.cellConfig setObject:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:0.0 alpha:1.0] forKey:@"textLabel.textColor"];
+    _photoRow.action.formSelector = @selector(didTouchAddPhoto:);
+    [section addFormRow:_photoRow];
     
     section = [XLFormSectionDescriptor formSectionWithTitle:@"您和这本书的故事"];
     section.footerTitle = @"没准认识个有缘人";
@@ -155,6 +161,12 @@ NSString *const kStory = @"story";
     newBook.contact = _contactRow.value;
     newBook.bookOwnerName = [[AVUser currentUser] username];
     
+    if (self.photoFile){
+        newBook.photo = self.photoFile;
+        NSLog(@"%@ added", newBook.photo);
+//        [newBook setObject:self.photoFile forKey:@"photo"];
+    }
+    
     [newBook saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error){
             UIAlertView *success = [[UIAlertView alloc]initWithTitle:@"success" message:@"您的书本已经被放到书架上了。" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -165,6 +177,54 @@ NSString *const kStory = @"story";
             UIAlertView *errorview = [[UIAlertView alloc]initWithTitle:@"error" message:error.displayText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [errorview show];
         }
+    }];
+}
+
+#pragma mark - add photo
+-(IBAction)didTouchAddPhoto:(id)sender{
+    UIActionSheet *addPhotoAS = [[UIActionSheet alloc]initWithTitle:@"给书添加一张照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"从相册中挑一张", @"现在拍一张", nil];
+    [addPhotoAS showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"clicked at row %ld", (long)buttonIndex);
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    if (buttonIndex == 0){
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
+        [self presentViewController:imagePicker animated:YES completion:^{
+            ;
+        }];
+    }else if (buttonIndex == 1){
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
+        [self presentViewController:imagePicker animated:YES completion:^{
+            ;
+        }];
+    }
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    UIImage *originalImage, *editedImage, *imageToUse;
+    if (CFStringCompare ((CFStringRef) mediaType, kUTTypeImage, 0) == kCFCompareEqualTo) {
+        // ensure the user has taken a picture
+        editedImage = (UIImage *) [info objectForKey:UIImagePickerControllerEditedImage];
+        originalImage = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage];
+        if (editedImage) {
+            imageToUse = editedImage;
+        }
+        else {
+            imageToUse = originalImage;
+        }
+    }
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSData *photodata = UIImageJPEGRepresentation(imageToUse, 1.0);
+        self.photoFile = [AVFile fileWithName:[NSString stringWithFormat:@"bookimage"] data:photodata];
+        _photoRow.title = @"重新拍一张";
+        [self reloadFormRow:_photoRow];
     }];
 }
 

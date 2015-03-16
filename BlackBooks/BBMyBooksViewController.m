@@ -12,6 +12,7 @@
 #import "BBBook.h"
 #import <SVPullToRefresh.h>
 #import "BBBookDetailViewController.h"
+#import "BBNavigationController.h"
 
 @interface BBMyBooksViewController ()
 
@@ -25,6 +26,8 @@
     [super viewDidLoad];
     
     self.title = @"我的书架";
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStylePlain target:(BBNavigationController *)self.navigationController action:@selector(showMenu)];
     
     UIBarButtonItem *addBookItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBook:)];
     self.navigationItem.rightBarButtonItem = addBookItem;

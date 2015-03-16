@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		EB3923D9C420B2F9D3A4A65A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F867C7B789C449B13574AF /* libPods.a */; };
+		F50135621AAD62EC00BB5D36 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = F50135611AAD62EC00BB5D36 /* book.png */; };
+		F501356B1AAD75A300BB5D36 /* BBItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50135691AAD75A300BB5D36 /* BBItemTableViewCell.m */; };
+		F501356C1AAD75A300BB5D36 /* BBItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F501356A1AAD75A300BB5D36 /* BBItemTableViewCell.xib */; };
+		F50BD4091AAE909800493B8F /* BBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50BD4081AAE909800493B8F /* BBNavigationController.m */; };
+		F50BD40C1AAE918700493B8F /* BBMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50BD40B1AAE918700493B8F /* BBMenuController.m */; };
 		F52034B01A9F3D4E007ABAF7 /* BBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52034AE1A9F3D4E007ABAF7 /* BBViewController.m */; };
 		F52034B51A9F4935007ABAF7 /* BBRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52034B31A9F4935007ABAF7 /* BBRegisterViewController.m */; };
-		F52034BA1AA010A7007ABAF7 /* RNFrostedSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = F52034B91AA010A7007ABAF7 /* RNFrostedSidebar.m */; };
 		F52034C91AA02B03007ABAF7 /* burger.png in Resources */ = {isa = PBXBuildFile; fileRef = F52034C51AA02B03007ABAF7 /* burger.png */; };
 		F52034CA1AA02B03007ABAF7 /* burger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F52034C61AA02B03007ABAF7 /* burger@2x.png */; };
 		F52034CB1AA02B03007ABAF7 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = F52034C71AA02B03007ABAF7 /* gear.png */; };
@@ -29,9 +33,16 @@
 		F52034F71AA1B81A007ABAF7 /* BBMyBooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52034F61AA1B81A007ABAF7 /* BBMyBooksViewController.m */; };
 		F52035131AA40060007ABAF7 /* BBAddBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52035111AA40060007ABAF7 /* BBAddBookViewController.m */; };
 		F52035141AA40060007ABAF7 /* BBAddBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52035121AA40060007ABAF7 /* BBAddBookViewController.xib */; };
+		F5350C7A1AAC3B6900D1B864 /* PgySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5350C791AAC3B6900D1B864 /* PgySDK.framework */; };
+		F5350C7C1AAC3B8800D1B864 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5350C7B1AAC3B8800D1B864 /* OpenGLES.framework */; };
+		F5350C7E1AAC3B8F00D1B864 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5350C7D1AAC3B8F00D1B864 /* SceneKit.framework */; };
+		F5350C801AAC3B9700D1B864 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5350C7F1AAC3B9700D1B864 /* CoreMotion.framework */; };
+		F5350C821AAC3CE900D1B864 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5350C811AAC3CE900D1B864 /* icon.png */; };
+		F5350C891AAC425A00D1B864 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = F5350C871AAC425A00D1B864 /* share.png */; };
+		F5350C8A1AAC425A00D1B864 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = F5350C881AAC425A00D1B864 /* user.png */; };
+		F5350C8E1AAC436300D1B864 /* BBUserStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F5350C8D1AAC436300D1B864 /* BBUserStatus.m */; };
 		F53A808B1AA8241E00DF6D2C /* XLFormImageSelectorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53A80881AA8241E00DF6D2C /* XLFormImageSelectorCell.m */; };
 		F53A808C1AA8241E00DF6D2C /* XLFormCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53A808A1AA8241E00DF6D2C /* XLFormCustomCell.m */; };
-		F5579BAA1AA5593800743495 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = F5579BA91AA5593800743495 /* user.png */; };
 		F5579BAD1AA55BB600743495 /* BBSetUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5579BAC1AA55BB600743495 /* BBSetUserViewController.m */; };
 		F5579BB01AA55FF400743495 /* BBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F5579BAF1AA55FF400743495 /* BBUser.m */; };
 		F5579BB31AA5805900743495 /* BBChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5579BB21AA5805900743495 /* BBChangePasswordViewController.m */; };
@@ -42,7 +53,6 @@
 		F567B22C1AA7283600DCF521 /* BaseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F567B22A1AA7283600DCF521 /* BaseDetailViewController.xib */; };
 		F57AC4FE1AA4541400FC4979 /* BBBookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57AC4FC1AA4541400FC4979 /* BBBookDetailViewController.m */; };
 		F57AC4FF1AA4541400FC4979 /* BBBookDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57AC4FD1AA4541400FC4979 /* BBBookDetailViewController.xib */; };
-		F57AC50B1AA47F1B00FC4979 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = F57AC50A1AA47F1B00FC4979 /* share.png */; };
 		F57AC50F1AA47F5600FC4979 /* BBUserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57AC50D1AA47F5600FC4979 /* BBUserDetailViewController.m */; };
 		F57AC5101AA47F5600FC4979 /* BBUserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57AC50E1AA47F5600FC4979 /* BBUserDetailViewController.xib */; };
 		F57AC5131AA47FB800FC4979 /* BBUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F57AC5121AA47FB800FC4979 /* BBUserManager.m */; };
@@ -80,12 +90,18 @@
 		171622898261545704640229 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		54F867C7B789C449B13574AF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		85A13BB41BB47ED5097DFA05 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F50135611AAD62EC00BB5D36 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
+		F50135681AAD75A300BB5D36 /* BBItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBItemTableViewCell.h; sourceTree = "<group>"; };
+		F50135691AAD75A300BB5D36 /* BBItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBItemTableViewCell.m; sourceTree = "<group>"; };
+		F501356A1AAD75A300BB5D36 /* BBItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBItemTableViewCell.xib; sourceTree = "<group>"; };
+		F50BD4071AAE909800493B8F /* BBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBNavigationController.h; sourceTree = "<group>"; };
+		F50BD4081AAE909800493B8F /* BBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNavigationController.m; sourceTree = "<group>"; };
+		F50BD40A1AAE918700493B8F /* BBMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMenuController.h; sourceTree = "<group>"; };
+		F50BD40B1AAE918700493B8F /* BBMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMenuController.m; sourceTree = "<group>"; };
 		F52034AD1A9F3D4E007ABAF7 /* BBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBViewController.h; sourceTree = "<group>"; };
 		F52034AE1A9F3D4E007ABAF7 /* BBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBViewController.m; sourceTree = "<group>"; };
 		F52034B21A9F4935007ABAF7 /* BBRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBRegisterViewController.h; sourceTree = "<group>"; };
 		F52034B31A9F4935007ABAF7 /* BBRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBRegisterViewController.m; sourceTree = "<group>"; };
-		F52034B81AA010A7007ABAF7 /* RNFrostedSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNFrostedSidebar.h; sourceTree = "<group>"; };
-		F52034B91AA010A7007ABAF7 /* RNFrostedSidebar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFrostedSidebar.m; sourceTree = "<group>"; };
 		F52034C51AA02B03007ABAF7 /* burger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = burger.png; path = image/burger.png; sourceTree = "<group>"; };
 		F52034C61AA02B03007ABAF7 /* burger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "burger@2x.png"; path = "image/burger@2x.png"; sourceTree = "<group>"; };
 		F52034C71AA02B03007ABAF7 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gear.png; path = image/gear.png; sourceTree = "<group>"; };
@@ -111,11 +127,19 @@
 		F52035101AA40060007ABAF7 /* BBAddBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAddBookViewController.h; sourceTree = "<group>"; };
 		F52035111AA40060007ABAF7 /* BBAddBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAddBookViewController.m; sourceTree = "<group>"; };
 		F52035121AA40060007ABAF7 /* BBAddBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBAddBookViewController.xib; sourceTree = "<group>"; };
+		F5350C791AAC3B6900D1B864 /* PgySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PgySDK.framework; sourceTree = "<group>"; };
+		F5350C7B1AAC3B8800D1B864 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F5350C7D1AAC3B8F00D1B864 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		F5350C7F1AAC3B9700D1B864 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		F5350C811AAC3CE900D1B864 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		F5350C871AAC425A00D1B864 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		F5350C881AAC425A00D1B864 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		F5350C8C1AAC436300D1B864 /* BBUserStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUserStatus.h; sourceTree = "<group>"; };
+		F5350C8D1AAC436300D1B864 /* BBUserStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUserStatus.m; sourceTree = "<group>"; };
 		F53A80871AA8241E00DF6D2C /* XLFormImageSelectorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLFormImageSelectorCell.h; sourceTree = "<group>"; };
 		F53A80881AA8241E00DF6D2C /* XLFormImageSelectorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLFormImageSelectorCell.m; sourceTree = "<group>"; };
 		F53A80891AA8241E00DF6D2C /* XLFormCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLFormCustomCell.h; sourceTree = "<group>"; };
 		F53A808A1AA8241E00DF6D2C /* XLFormCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLFormCustomCell.m; sourceTree = "<group>"; };
-		F5579BA91AA5593800743495 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		F5579BAB1AA55BB600743495 /* BBSetUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSetUserViewController.h; sourceTree = "<group>"; };
 		F5579BAC1AA55BB600743495 /* BBSetUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSetUserViewController.m; sourceTree = "<group>"; };
 		F5579BAE1AA55FF400743495 /* BBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUser.h; sourceTree = "<group>"; };
@@ -134,7 +158,6 @@
 		F57AC4FB1AA4541400FC4979 /* BBBookDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBookDetailViewController.h; sourceTree = "<group>"; };
 		F57AC4FC1AA4541400FC4979 /* BBBookDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBookDetailViewController.m; sourceTree = "<group>"; };
 		F57AC4FD1AA4541400FC4979 /* BBBookDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBBookDetailViewController.xib; sourceTree = "<group>"; };
-		F57AC50A1AA47F1B00FC4979 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		F57AC50C1AA47F5600FC4979 /* BBUserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUserDetailViewController.h; sourceTree = "<group>"; };
 		F57AC50D1AA47F5600FC4979 /* BBUserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUserDetailViewController.m; sourceTree = "<group>"; };
 		F57AC50E1AA47F5600FC4979 /* BBUserDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBUserDetailViewController.xib; sourceTree = "<group>"; };
@@ -183,7 +206,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5350C801AAC3B9700D1B864 /* CoreMotion.framework in Frameworks */,
+				F5350C7E1AAC3B8F00D1B864 /* SceneKit.framework in Frameworks */,
+				F5350C7C1AAC3B8800D1B864 /* OpenGLES.framework in Frameworks */,
 				EB3923D9C420B2F9D3A4A65A /* libPods.a in Frameworks */,
+				F5350C7A1AAC3B6900D1B864 /* PgySDK.framework in Frameworks */,
 				F57AC5301AA484B300FC4979 /* libUMSocial_Sdk_4.2.1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +228,10 @@
 		3011DD0383D5C31851953DBB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5350C7F1AAC3B9700D1B864 /* CoreMotion.framework */,
+				F5350C7D1AAC3B8F00D1B864 /* SceneKit.framework */,
+				F5350C7B1AAC3B8800D1B864 /* OpenGLES.framework */,
+				F5350C791AAC3B6900D1B864 /* PgySDK.framework */,
 				54F867C7B789C449B13574AF /* libPods.a */,
 			);
 			name = Frameworks;
@@ -215,6 +246,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F50135661AAD757300BB5D36 /* XLFormImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				F53A80871AA8241E00DF6D2C /* XLFormImageSelectorCell.h */,
+				F53A80881AA8241E00DF6D2C /* XLFormImageSelectorCell.m */,
+				F53A80891AA8241E00DF6D2C /* XLFormCustomCell.h */,
+				F53A808A1AA8241E00DF6D2C /* XLFormCustomCell.m */,
+			);
+			name = XLFormImageCell;
+			sourceTree = "<group>";
+		};
+		F50135671AAD758700BB5D36 /* BBCell */ = {
+			isa = PBXGroup;
+			children = (
+				F50135681AAD75A300BB5D36 /* BBItemTableViewCell.h */,
+				F50135691AAD75A300BB5D36 /* BBItemTableViewCell.m */,
+				F501356A1AAD75A300BB5D36 /* BBItemTableViewCell.xib */,
+			);
+			name = BBCell;
+			sourceTree = "<group>";
+		};
 		F52034B71AA01033007ABAF7 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,8 +277,6 @@
 				F52034DF1AA03BFF007ABAF7 /* btn_close_selected@2x.png */,
 				F52034E01AA03BFF007ABAF7 /* DXAlertView.h */,
 				F52034E11AA03BFF007ABAF7 /* DXAlertView.m */,
-				F52034B81AA010A7007ABAF7 /* RNFrostedSidebar.h */,
-				F52034B91AA010A7007ABAF7 /* RNFrostedSidebar.m */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -234,8 +284,10 @@
 		F52034BC1AA0135D007ABAF7 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				F5579BA91AA5593800743495 /* user.png */,
-				F57AC50A1AA47F1B00FC4979 /* share.png */,
+				F50135611AAD62EC00BB5D36 /* book.png */,
+				F5350C871AAC425A00D1B864 /* share.png */,
+				F5350C881AAC425A00D1B864 /* user.png */,
+				F5350C811AAC3CE900D1B864 /* icon.png */,
 				F52034D71AA03429007ABAF7 /* like.png */,
 				F52034CD1AA02B43007ABAF7 /* keypad.png */,
 				F52034C51AA02B03007ABAF7 /* burger.png */,
@@ -298,6 +350,15 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		F5350C8B1AAC434A00D1B864 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				F5350C8C1AAC436300D1B864 /* BBUserStatus.h */,
+				F5350C8D1AAC436300D1B864 /* BBUserStatus.m */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		F5626DA81AA830F800123B3D /* About me */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +371,7 @@
 		F567B21F1AA7264100DCF521 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				F567D0251AAEA8DB00782999 /* Menu */,
 				F57AC4F71AA4529700FC4979 /* BookDetail */,
 				F52034FA1AA1BB31007ABAF7 /* Settings */,
 				F52034F91AA1BAF7007ABAF7 /* Homepage */,
@@ -323,6 +385,7 @@
 		F567B2201AA7266C00DCF521 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				F5350C8B1AAC434A00D1B864 /* Util */,
 				F567B2261AA727A400DCF521 /* Custom UI */,
 			);
 			name = General;
@@ -371,10 +434,8 @@
 		F567B2261AA727A400DCF521 /* Custom UI */ = {
 			isa = PBXGroup;
 			children = (
-				F53A80871AA8241E00DF6D2C /* XLFormImageSelectorCell.h */,
-				F53A80881AA8241E00DF6D2C /* XLFormImageSelectorCell.m */,
-				F53A80891AA8241E00DF6D2C /* XLFormCustomCell.h */,
-				F53A808A1AA8241E00DF6D2C /* XLFormCustomCell.m */,
+				F50135671AAD758700BB5D36 /* BBCell */,
+				F50135661AAD757300BB5D36 /* XLFormImageCell */,
 				F567B2271AA727FA00DCF521 /* Detail VC */,
 			);
 			name = "Custom UI";
@@ -388,6 +449,17 @@
 				F567B22A1AA7283600DCF521 /* BaseDetailViewController.xib */,
 			);
 			name = "Detail VC";
+			sourceTree = "<group>";
+		};
+		F567D0251AAEA8DB00782999 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F50BD4071AAE909800493B8F /* BBNavigationController.h */,
+				F50BD4081AAE909800493B8F /* BBNavigationController.m */,
+				F50BD40A1AAE918700493B8F /* BBMenuController.h */,
+				F50BD40B1AAE918700493B8F /* BBMenuController.m */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		F57AC4F71AA4529700FC4979 /* BookDetail */ = {
@@ -598,6 +670,7 @@
 				F57AC53E1AA4868400FC4979 /* BBEditBookViewController.xib in Resources */,
 				F57AC4FF1AA4541400FC4979 /* BBBookDetailViewController.xib in Resources */,
 				F57AC5341AA484B300FC4979 /* UMShareEditViewController.xib in Resources */,
+				F5350C8A1AAC425A00D1B864 /* user.png in Resources */,
 				F52034E31AA03BFF007ABAF7 /* btn_close_normal@2x.png in Resources */,
 				F52035141AA40060007ABAF7 /* BBAddBookViewController.xib in Resources */,
 				F57AC5391AA484B300FC4979 /* UMSocialSDKResourcesNew.bundle in Resources */,
@@ -611,17 +684,19 @@
 				F567B22C1AA7283600DCF521 /* BaseDetailViewController.xib in Resources */,
 				F52034E41AA03BFF007ABAF7 /* btn_close_selected.png in Resources */,
 				F57AC5351AA484B300FC4979 /* UMShareEditViewControlleriPad.xib in Resources */,
+				F5350C891AAC425A00D1B864 /* share.png in Resources */,
 				F52034E51AA03BFF007ABAF7 /* btn_close_selected@2x.png in Resources */,
 				F57AC5381AA484B300FC4979 /* UMSShareListController.xib in Resources */,
-				F5579BAA1AA5593800743495 /* user.png in Resources */,
-				F57AC50B1AA47F1B00FC4979 /* share.png in Resources */,
 				F57AC52F1AA484B300FC4979 /* UMSocialLocalizable.strings in Resources */,
 				F52034CB1AA02B03007ABAF7 /* gear.png in Resources */,
 				F57AC5361AA484B300FC4979 /* UMSLoginViewController.xib in Resources */,
 				F52034D81AA03429007ABAF7 /* like.png in Resources */,
 				F5E74D031A9B34880046E70F /* LaunchScreen.xib in Resources */,
+				F5350C821AAC3CE900D1B864 /* icon.png in Resources */,
 				F52034CA1AA02B03007ABAF7 /* burger@2x.png in Resources */,
 				F52034E21AA03BFF007ABAF7 /* btn_close_normal.png in Resources */,
+				F50135621AAD62EC00BB5D36 /* book.png in Resources */,
+				F501356C1AAD75A300BB5D36 /* BBItemTableViewCell.xib in Resources */,
 				F5E74D001A9B34880046E70F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -676,9 +751,10 @@
 				F5579BAD1AA55BB600743495 /* BBSetUserViewController.m in Sources */,
 				F52034EB1AA07725007ABAF7 /* BBBook.m in Sources */,
 				F52034B01A9F3D4E007ABAF7 /* BBViewController.m in Sources */,
-				F52034BA1AA010A7007ABAF7 /* RNFrostedSidebar.m in Sources */,
+				F5350C8E1AAC436300D1B864 /* BBUserStatus.m in Sources */,
 				F52034F71AA1B81A007ABAF7 /* BBMyBooksViewController.m in Sources */,
 				F52034B51A9F4935007ABAF7 /* BBRegisterViewController.m in Sources */,
+				F50BD40C1AAE918700493B8F /* BBMenuController.m in Sources */,
 				F5579BB31AA5805900743495 /* BBChangePasswordViewController.m in Sources */,
 				F57AC4FE1AA4541400FC4979 /* BBBookDetailViewController.m in Sources */,
 				F5E74CF51A9B34880046E70F /* AppDelegate.m in Sources */,
@@ -686,12 +762,14 @@
 				F5579BB01AA55FF400743495 /* BBUser.m in Sources */,
 				F57AC5131AA47FB800FC4979 /* BBUserManager.m in Sources */,
 				F57AC53D1AA4868400FC4979 /* BBEditBookViewController.m in Sources */,
+				F501356B1AAD75A300BB5D36 /* BBItemTableViewCell.m in Sources */,
 				F53A808B1AA8241E00DF6D2C /* XLFormImageSelectorCell.m in Sources */,
 				F5E74CF21A9B34880046E70F /* main.m in Sources */,
 				F52034D51AA030AC007ABAF7 /* BBLoginViewController.m in Sources */,
 				F5626DAB1AA8311F00123B3D /* BBAboutmeViewController.m in Sources */,
 				F53A808C1AA8241E00DF6D2C /* XLFormCustomCell.m in Sources */,
 				F52034EE1AA07931007ABAF7 /* BBBookManager.m in Sources */,
+				F50BD4091AAE909800493B8F /* BBNavigationController.m in Sources */,
 				F5579BB61AA5876600743495 /* BBTucaoViewController.m in Sources */,
 				F5579BB91AA590A400743495 /* BBForgetPasswordViewController.m in Sources */,
 				F567B22B1AA7283600DCF521 /* BaseDetailViewController.m in Sources */,
@@ -823,6 +901,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BlackBooks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -841,6 +923,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BlackBooks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

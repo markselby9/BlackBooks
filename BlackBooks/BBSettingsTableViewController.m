@@ -14,6 +14,8 @@
 #import "BBTucaoViewController.h"
 #import "DXAlertView.h"
 #import "BBAboutmeViewController.h"
+ #import <PgySDK/PgyManager.h>
+#import "BBNavigationController.h"
 
 @interface BBSettingsTableViewController ()
 @property (nonatomic) NSMutableArray *settingsArray;
@@ -30,7 +32,9 @@
     self.tableView.dataSource = self;
     
     self.title = @"设置";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStylePlain target:(BBNavigationController *)self.navigationController action:@selector(showMenu)];
     
+    [[PgyManager sharedPgyManager] checkUpdate];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -46,14 +50,14 @@
     self.userArray = [[NSMutableArray alloc]init];
     [self.userArray addObject:@"个人资料设置"];
     [self.userArray addObject:@"密码修改"];
-    [self.userArray addObject:@"我要吐槽"];
+    [self.userArray addObject:@"我要吐槽（摇一摇也可以！）"];
     if (self.currentUser){
         [self.userArray addObject:@"登出当前帐号"];
     }
     
     self.aboutArray = [[NSMutableArray alloc]init];
     [self.aboutArray addObject:@"检查更新"];
-    [self.aboutArray addObject:@"关于 Black Books "];
+    [self.aboutArray addObject:@"关于 Black Books ，我的开发计划"];
     self.settingsArray = [[NSMutableArray alloc]init];
     [self.settingsArray addObject:self.userArray];
     [self.settingsArray addObject:self.aboutArray];

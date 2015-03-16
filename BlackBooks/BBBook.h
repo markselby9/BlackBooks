@@ -15,7 +15,7 @@
 @property (nonatomic, copy) NSString *author;
 @property (nonatomic, assign) int originalprice;
 @property (nonatomic, assign) int price;
-@property (nonatomic, strong) UIImage *photo;
+@property (nonatomic, strong) AVFile *photo;
 @property (nonatomic, copy) NSString *situation;
 @property (nonatomic, copy) NSString *contact;
 @property (nonatomic, copy) NSString *story;

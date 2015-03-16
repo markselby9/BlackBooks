@@ -13,6 +13,9 @@
 #import "BBBookManager.h"
 #import "BBUser.h"
 #import "UMSocial.h"
+#import <PgySDK/PgyManager.h>
+#import "BBNavigationController.h"
+#import "BBMenuController.h"
 
 @interface AppDelegate ()
 
@@ -23,21 +26,58 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [AVOSCloud setApplicationId:@"3kuu7wpf8d7v6aeho00hgdoo0fxf3s2ll0uxv6742739f5f5" clientKey:@"t1qg98fpc0jb1tq8e6dqkdtbjmu9isd0ybf85j8u6hk5qcal"];
+    //友盟
     [UMSocialData setAppKey:@"54f44c92fd98c5c66b00017e"];
+    //蒲公英
+    [[PgyManager sharedPgyManager] startManagerWithAppId:@"83143bb2cbdf41339ac7541e98ac7572"];
     [AVOSCloud useAVCloudCN];
     [BBUser registerSubclass];
     [BBBook registerSubclass];
     
-    
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
-    BBViewController *bbVC = [[BBViewController alloc]init];
-    UINavigationController *naviVC = [[UINavigationController alloc]initWithRootViewController:bbVC];
-    self.window.rootViewController = naviVC;
+    
+    //home VC
+    BBNavigationController *bbNavi = [[BBNavigationController alloc]initWithRootViewController:[[BBViewController alloc]init]];
+    BBMenuController *bbMenu = [[BBMenuController alloc]initWithStyle:UITableViewStylePlain];
+    
+    REFrostedViewController *reVC = [[REFrostedViewController alloc]initWithContentViewController:bbNavi menuViewController:bbMenu];
+    reVC.direction = REFrostedViewControllerDirectionLeft;
+    reVC.liveBlurBackgroundStyle = REFrostedViewControllerLiveBackgroundStyleLight;
+    reVC.liveBlur = YES;
+    reVC.delegate = self;
+    
+    self.window.rootViewController = reVC;
     [self.window setBackgroundColor:[UIColor whiteColor]];
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     return YES;
 }
+
+#pragma mark -- REFrosteddelegate
+//- (void)frostedViewController:(REFrostedViewController *)frostedViewController didRecognizePanGesture:(UIPanGestureRecognizer *)recognizer
+//{
+//    
+//}
+//
+//- (void)frostedViewController:(REFrostedViewController *)frostedViewController willShowMenuViewController:(UIViewController *)menuViewController
+//{
+//    NSLog(@"willShowMenuViewController");
+//}
+//
+//- (void)frostedViewController:(REFrostedViewController *)frostedViewController didShowMenuViewController:(UIViewController *)menuViewController
+//{
+//    NSLog(@"didShowMenuViewController");
+//}
+//
+//- (void)frostedViewController:(REFrostedViewController *)frostedViewController willHideMenuViewController:(UIViewController *)menuViewController
+//{
+//    NSLog(@"willHideMenuViewController");
+//}
+//
+//- (void)frostedViewController:(REFrostedViewController *)frostedViewController didHideMenuViewController:(UIViewController *)menuViewController
+//{
+//    NSLog(@"didHideMenuViewController");
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

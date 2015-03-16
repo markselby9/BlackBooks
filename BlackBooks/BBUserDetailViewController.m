@@ -37,10 +37,7 @@
 -(void)addUserDetailView:(AVUser*)user{
     M80AttributedLabel *label = [[M80AttributedLabel alloc]initWithFrame:CGRectZero];
     label.lineSpacing = 5.0;
-//    [label appendImage:[UIImage imageNamed:@"user"
-//                        ] maxSize:CGSizeMake(50, 50)
-//                margin:UIEdgeInsetsZero
-//             alignment:M80ImageAlignmentCenter];
+    
     
     NSString *text  = [self textForView];
     [label appendText:text];
@@ -48,6 +45,18 @@
     label.frame = CGRectInset(self.userDetailView.bounds,20,20);
     [label setTextAlignment:kCTTextAlignmentNatural];
     
+    //load image asynchronously
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        AVFile *imagedatafile = [self.user valueForKey:@"image"];
+        NSData *imagedata = [imagedatafile getData];
+        UIImage *image = [UIImage imageWithData:imagedata];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [label appendImage:image maxSize:CGSizeMake(50, 50)
+                        margin:UIEdgeInsetsZero
+                     alignment:M80ImageAlignmentCenter];
+        });
+    });
     [self.userDetailView addSubview:label];
 }
 
@@ -75,6 +84,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)beginChat:(id)sender {
+    UIAlertView *alertview = [[UIAlertView alloc]initWithTitle:@"还没做呢。。" message:@"这里打算做个功能，还没开工。。" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertview show];
 }
 
 /*

@@ -8,6 +8,6 @@
 #import <UIKit/UIKit.h>
 #import "XLFormViewController.h"
 
-@interface BBAddBookViewController : XLFormViewController
+@interface BBAddBookViewController : XLFormViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @end

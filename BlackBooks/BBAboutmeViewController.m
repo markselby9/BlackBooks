@@ -27,7 +27,7 @@
     _webview.delegate =self;
     [self.view addSubview:_webview];
     
-    NSURL *url =[[NSURL alloc] initWithString:@"http://markselby9.github.io/blackbooks/about.html"];
+    NSURL *url =[[NSURL alloc] initWithString:@"http://markselby9.github.io/blackbooks/app/about.html"];
     NSURLRequest *request =  [[NSURLRequest alloc] initWithURL:url];
     [_webview loadRequest:request];
 }
@@ -40,7 +40,7 @@
         return;
     //给webview添加一段自定义的javascript
     
-    [webView stringByEvaluatingJavaScriptFromString:@"alert(\"Thanks for visiting!\");"];
+    [webView stringByEvaluatingJavaScriptFromString:@"alert(\"我是 Mark，在此感谢您的光临！\");"];
     
     //开始调用自定义的javascript
 //    [webView stringByEvaluatingJavaScriptFromString:@"myFunction();"];

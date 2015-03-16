@@ -9,6 +9,7 @@
 #import "XLForm.h"
 #import "BBEditBookViewController.h"
 #import "BBBook.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface BBEditBookViewController ()
 
@@ -20,6 +21,7 @@
 @property (nonatomic) XLFormRowDescriptor *contactRow;
 @property (nonatomic) XLFormRowDescriptor *storyRow;
 @property (nonatomic) XLFormRowDescriptor *photoRow;
+@property (nonatomic) AVFile *photoFile;
 
 @end
 
@@ -67,16 +69,20 @@
     _originalPriceRow.required = YES;
     [section addFormRow:_originalPriceRow];
     
-    _situationRow = [XLFormRowDescriptor formRowDescriptorWithTag: kSituation rowType:XLFormRowDescriptorTypeSelectorPush title:@"的状态"];
-    _situationRow.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"Option 1"],
-                                      [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"Option 2"],
-                                      [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:@"Option 3"],
-                                      [XLFormOptionsObject formOptionsObjectWithValue:@(3) displayText:@"Option 4"],
-                                      [XLFormOptionsObject formOptionsObjectWithValue:@(4) displayText:@"Option 5"]
+    _situationRow = [XLFormRowDescriptor formRowDescriptorWithTag:kSituation rowType:XLFormRowDescriptorTypeSelectorActionSheet title:@"当前状态"];
+    _situationRow.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"全新刚买没翻过"],
+                                      [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"刚看完了"],
+                                      [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:@"有些笔记"],
+                                      [XLFormOptionsObject formOptionsObjectWithValue:@(3) displayText:@"已经破万卷"],
+                                      [XLFormOptionsObject formOptionsObjectWithValue:@(4) displayText:@"吃了很久灰"]
                                       ];
-    _situationRow.value = [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"Option 2"];
+//    _situationRow.value = [XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"全新刚买没翻过"];
     [section addFormRow:_situationRow];
     
+    _photoRow = [XLFormRowDescriptor formRowDescriptorWithTag:kPhoto rowType:XLFormRowDescriptorTypeButton title:@"添加照片"];
+    [_photoRow.cellConfig setObject:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:0.0 alpha:1.0] forKey:@"textLabel.textColor"];
+    _photoRow.action.formSelector = @selector(didTouchEditPhoto:);
+    [section addFormRow:_photoRow];
     
     section = [XLFormSectionDescriptor formSectionWithTitle:@"您和这本书的故事"];
     section.footerTitle = @"没准认识个有缘人";
@@ -112,6 +118,14 @@
     [_authorRow setValue:_book.author];
     [_originalPriceRow setValue:[NSNumber numberWithInt:_book.originalprice]];
     [_priceRow setValue:[NSNumber numberWithInt:_book.price]];
+    [_storyRow setValue:_book.story];
+    [_contactRow setValue:_book.contact];
+    [_situationRow setValue:_book.situation];
+    if (_book.photo){
+        self.photoFile = _book.photo;
+        _photoRow.title = @"换一张照片";
+        [self reloadFormRow:_photoRow];
+    }
     
     UIBarButtonItem *save = [[UIBarButtonItem alloc]initWithTitle:@"完成修改" style:UIBarButtonItemStyleDone target:self action:@selector(saveEditPressed:)];
     self.navigationItem.rightBarButtonItem = save;
@@ -142,6 +156,12 @@
     _book.situation = situation;
     _book.price = price;
     _book.bookOwnerName = [[AVUser currentUser] username];
+    _book.story = _storyRow.value;
+    _book.contact = _contactRow.value;
+    if (_photoFile){
+        _book.photo = self.photoFile;
+        NSLog(@"%@ added", _book.photo);
+    }
     
     [_book saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error){
@@ -154,8 +174,53 @@
             [errorview show];
         }
     }];
+}
+#pragma mark - edit photo
+-(IBAction)didTouchEditPhoto:(id)sender{
+    UIActionSheet *addPhotoAS = [[UIActionSheet alloc]initWithTitle:@"给书添加一张照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"从相册中挑一张", @"现在拍一张", nil];
+    [addPhotoAS showInView:self.view];
+}
 
-    
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"clicked at row %ld", (long)buttonIndex);
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    if (buttonIndex == 0){
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
+        [self presentViewController:imagePicker animated:YES completion:^{
+            ;
+        }];
+    }else if (buttonIndex == 1){
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
+        [self presentViewController:imagePicker animated:YES completion:^{
+            ;
+        }];
+    }
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    UIImage *originalImage, *editedImage, *imageToUse;
+    if (CFStringCompare ((CFStringRef) mediaType, kUTTypeImage, 0) == kCFCompareEqualTo) {
+        // ensure the user has taken a picture
+        editedImage = (UIImage *) [info objectForKey:UIImagePickerControllerEditedImage];
+        originalImage = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage];
+        if (editedImage) {
+            imageToUse = editedImage;
+        }
+        else {
+            imageToUse = originalImage;
+        }
+    }
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSData *photodata = UIImageJPEGRepresentation(imageToUse, 1.0);
+        self.photoFile = [AVFile fileWithName:[NSString stringWithFormat:@"bookimage"] data:photodata];
+        _photoRow.title = @"重新拍一张";
+        [self reloadFormRow:_photoRow];
+    }];
 }
 
 /*

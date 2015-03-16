@@ -10,7 +10,7 @@
 #import "BBBook.h"
 #import "BaseDetailViewController.h"
 
-@interface BBBookDetailViewController : BaseDetailViewController<UIActionSheetDelegate>
+@interface BBBookDetailViewController : BaseDetailViewController<UIActionSheetDelegate, UIAlertViewDelegate>
 
 @property (nonatomic) BBBook *book;
 

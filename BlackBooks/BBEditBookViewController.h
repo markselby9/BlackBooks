@@ -10,7 +10,7 @@
 #import "XLFormViewController.h"
 #import "BBBook.h"
 
-@interface BBEditBookViewController : XLFormViewController
+@interface BBEditBookViewController : XLFormViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property(nonatomic) BBBook* book;
 
 @end

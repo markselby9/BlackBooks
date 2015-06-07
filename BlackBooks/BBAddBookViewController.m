@@ -67,22 +67,22 @@ NSString *const kStory = @"story";
     [formDescriptor addFormSection:section];
     
     // Name
-    _nameRow = [XLFormRowDescriptor formRowDescriptorWithTag:kName rowType:XLFormRowDescriptorTypeText title:@"的名字"];
+    _nameRow = [XLFormRowDescriptor formRowDescriptorWithTag:kName rowType:XLFormRowDescriptorTypeText title:@"名字"];
     _nameRow.required = YES;
     [section addFormRow:_nameRow];
     
     // Author
-    _authorRow = [XLFormRowDescriptor formRowDescriptorWithTag:kAuthor rowType:XLFormRowDescriptorTypeName title:@"的作者"];
+    _authorRow = [XLFormRowDescriptor formRowDescriptorWithTag:kAuthor rowType:XLFormRowDescriptorTypeName title:@"作者"];
     _authorRow.required = YES;
     [section addFormRow:_authorRow];
     
-    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"originalowner" rowType:XLFormRowDescriptorTypeName title:@"的主人"];
+    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"originalowner" rowType:XLFormRowDescriptorTypeName title:@"现在的主人"];
     row.disabled = YES;
     row.value = [AVUser currentUser].username;
     [section addFormRow:row];
     
     // original
-    _originalPriceRow = [XLFormRowDescriptor formRowDescriptorWithTag:kOriginalPrice rowType:XLFormRowDescriptorTypeInteger title:@"的原价"];
+    _originalPriceRow = [XLFormRowDescriptor formRowDescriptorWithTag:kOriginalPrice rowType:XLFormRowDescriptorTypeInteger title:@"购买的原价"];
     _originalPriceRow.required = YES;
     [section addFormRow:_originalPriceRow];
     

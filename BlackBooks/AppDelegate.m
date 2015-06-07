@@ -16,6 +16,7 @@
 #import <PgySDK/PgyManager.h>
 #import "BBNavigationController.h"
 #import "BBMenuController.h"
+#import <PDDebugger.h>
 
 @interface AppDelegate ()
 
@@ -33,6 +34,26 @@
     [AVOSCloud useAVCloudCN];
     [BBUser registerSubclass];
     [BBBook registerSubclass];
+    
+    //ponyd debugger
+    PDDebugger *debugger = [PDDebugger defaultInstance];
+    //设置网络监控
+    [debugger enableNetworkTrafficDebugging];
+    [debugger forwardAllNetworkTraffic];
+    //通过TCP连接至服务端
+    [debugger connectToURL:[NSURL URLWithString:@"ws://localhost:9000/device"]];
+    // 也可通过bonjour自动连接
+    //[debugger autoConnect];
+    // 或连接至指定bonjour服务
+    //[debugger autoConnectToBonjourServiceNamed:@"MY PONY"];
+    //设置CoreData监控
+    [debugger enableCoreDataDebugging];
+//    [debugger addManagedObjectContext:self.managedObjectContext withName:@"TIME Test MOC"];
+    //设置视图分层监控
+    [debugger enableViewHierarchyDebugging];
+    //设置远程日志打印
+    [debugger enableRemoteLogging];
+    
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     

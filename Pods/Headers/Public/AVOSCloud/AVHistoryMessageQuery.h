@@ -1,1 +1,1 @@
-../../../AVOSCloud/iOS/release-v2.6.10.2/AVOSCloud.framework/Headers/AVHistoryMessageQuery.h
+../../../AVOSCloud/iOS/release-v3.0.0/AVOSCloud.framework/Headers/AVHistoryMessageQuery.h

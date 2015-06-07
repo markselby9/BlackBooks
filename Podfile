@@ -2,8 +2,11 @@
 platform :ios, '7.0'
 
 pod 'AVOSCloud'
-#pod 'AVOSCloudUI'
 pod 'XLForm'
 pod 'SVPullToRefresh'
-pod 'M80AttributedLabel'
+#pod 'M80AttributedLabel'
 pod 'REFrostedViewController'
+pod 'CocoaLumberjack'
+#pod 'TapkuLibrary'
+#pod 'FlatUIKit'
+pod 'PonyDebugger'

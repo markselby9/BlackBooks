@@ -40,7 +40,7 @@
 
 +(XLFormValidator *)emailValidator
 {
-    return [XLFormRegexValidator formRegexValidatorWithMsg:NSLocalizedString(@"Invalid email address", nil) regex:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"];
+    return [XLFormRegexValidator formRegexValidatorWithMsg:NSLocalizedString(@"邮件地址不可用", nil) regex:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"];
 }
 
 @end

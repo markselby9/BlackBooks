@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5A504FF8-7E95-4282-8AC4-F4F0E8E4F429</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BlackBooks</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DE15E2A5ED6ABDA8179C8A599EF8091C6D64C5DE</key>
+		<string>https://github.com/markselby9/BlackBooks.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BlackBooks.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DE15E2A5ED6ABDA8179C8A599EF8091C6D64C5DE</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/markselby9/BlackBooks.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DE15E2A5ED6ABDA8179C8A599EF8091C6D64C5DE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DE15E2A5ED6ABDA8179C8A599EF8091C6D64C5DE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BlackBooks</string>
+		</dict>
+	</array>
+</dict>
+</plist>

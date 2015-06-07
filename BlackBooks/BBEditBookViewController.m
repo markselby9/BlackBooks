@@ -50,22 +50,22 @@
     [formDescriptor addFormSection:section];
     
     // Name
-    _nameRow = [XLFormRowDescriptor formRowDescriptorWithTag:kName rowType:XLFormRowDescriptorTypeText title:@"的名字"];
+    _nameRow = [XLFormRowDescriptor formRowDescriptorWithTag:kName rowType:XLFormRowDescriptorTypeText title:@"名字"];
     _nameRow.required = YES;
     [section addFormRow:_nameRow];
     
     // Author
-    _authorRow = [XLFormRowDescriptor formRowDescriptorWithTag:kAuthor rowType:XLFormRowDescriptorTypeName title:@"的作者"];
+    _authorRow = [XLFormRowDescriptor formRowDescriptorWithTag:kAuthor rowType:XLFormRowDescriptorTypeName title:@"作者"];
     _authorRow.required = YES;
     [section addFormRow:_authorRow];
     
-    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"originalowner" rowType:XLFormRowDescriptorTypeName title:@"的主人"];
+    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"originalowner" rowType:XLFormRowDescriptorTypeName title:@"主人"];
     row.disabled = YES;
     row.value = [AVUser currentUser].username;
     [section addFormRow:row];
     
     // original
-    _originalPriceRow = [XLFormRowDescriptor formRowDescriptorWithTag:kOriginalPrice rowType:XLFormRowDescriptorTypeInteger title:@"的原价"];
+    _originalPriceRow = [XLFormRowDescriptor formRowDescriptorWithTag:kOriginalPrice rowType:XLFormRowDescriptorTypeInteger title:@"原价"];
     _originalPriceRow.required = YES;
     [section addFormRow:_originalPriceRow];
     
@@ -121,6 +121,7 @@
     [_storyRow setValue:_book.story];
     [_contactRow setValue:_book.contact];
     [_situationRow setValue:_book.situation];
+//    [_situationRow setValue:_book.situation];
     if (_book.photo){
         self.photoFile = _book.photo;
         _photoRow.title = @"换一张照片";
@@ -137,23 +138,28 @@
 }
 
 -(IBAction)saveEditPressed:(id)sender{
+    [self.tableView endEditing:YES];
     NSArray * validationErrors = [self formValidationErrors];
     if (validationErrors.count > 0){
         [self showFormValidationError:[validationErrors firstObject]];
         return;
     }
-    [self.tableView endEditing:YES];
     NSString *bookname = _nameRow.value;
     NSString *author = _authorRow.value;
     int originalprice = [_originalPriceRow.value intValue];
-    NSString *situation = ((XLFormOptionsObject*)_situationRow.value).formDisplayText;
+    if ([_situationRow.value isKindOfClass:[NSString class]]){
+        
+    }else{
+        NSString *situation = ((XLFormOptionsObject*)_situationRow.value).formDisplayText;
+        _book.situation = situation;
+    }
+//    NSString *situation = ((XLFormOptionsObject*)_situationRow.value).formDisplayText;
     int price = [_priceRow.value intValue];
     // set book
     
     _book.bookname = bookname;
     _book.author = author;
     _book.originalprice = originalprice;
-    _book.situation = situation;
     _book.price = price;
     _book.bookOwnerName = [[AVUser currentUser] username];
     _book.story = _storyRow.value;

@@ -187,7 +187,7 @@
                 msg = self.requireMsg;
             } else {
                 // default message for required msg
-                msg = NSLocalizedString(@"%@ 不能为空", nil);
+                msg = NSLocalizedString(@"%@ 不能为空", @"表单的所有地方都");
             }
             valStatus.msg = [NSString stringWithFormat:msg, self.title];
             

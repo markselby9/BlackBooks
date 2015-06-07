@@ -9,10 +9,10 @@
 #import "BBUserDetailViewController.h"
 #import "BBUserManager.h"
 #import <AVOSCloud/AVOSCloud.h>
-#import <M80AttributedLabel.h>
-
 @interface BBUserDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *userDetailView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageOutlet;
+@property (weak, nonatomic) IBOutlet UILabel *textLabelOutlet;
 @property (nonatomic) AVUser *user;
 
 @end
@@ -35,15 +35,8 @@
 }
 
 -(void)addUserDetailView:(AVUser*)user{
-    M80AttributedLabel *label = [[M80AttributedLabel alloc]initWithFrame:CGRectZero];
-    label.lineSpacing = 5.0;
-    
-    
     NSString *text  = [self textForView];
-    [label appendText:text];
-    
-    label.frame = CGRectInset(self.userDetailView.bounds,20,20);
-    [label setTextAlignment:kCTTextAlignmentNatural];
+    [self.textLabelOutlet setText:text];
     
     //load image asynchronously
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -52,12 +45,9 @@
         NSData *imagedata = [imagedatafile getData];
         UIImage *image = [UIImage imageWithData:imagedata];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [label appendImage:image maxSize:CGSizeMake(50, 50)
-                        margin:UIEdgeInsetsZero
-                     alignment:M80ImageAlignmentCenter];
+            [self.imageOutlet setImage:image];
         });
     });
-    [self.userDetailView addSubview:label];
 }
 
 - (NSString *)textForView

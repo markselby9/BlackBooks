@@ -11,7 +11,6 @@
 //#import "IBActionSheet.h"
 #import "UMSocial.h"
 #import "BBEditBookViewController.h"
-#import <M80AttributedLabel.h>
 #import "BBUserStatus.h"
 #import "BBLoginViewController.h"
 #import "BBUserStatus.h"
@@ -20,6 +19,8 @@
 @interface BBBookDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *detailView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *toobarItem;
+@property (weak, nonatomic) IBOutlet UIImageView *imageOutlet;
+@property (weak, nonatomic) IBOutlet UILabel *booknameOutlet;
 
 @end
 
@@ -44,8 +45,17 @@
     [self addBookView:self.book];
     self.title = self.book.bookname;
     
-    UIBarButtonItem *shareitem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"share"] style:UIBarButtonItemStylePlain target:self action:@selector(shareBook:)];
-    self.navigationItem.rightBarButtonItem = shareitem;
+    UIImage *image = [UIImage imageNamed:@"share.png"];
+    UIButton *sharebtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [sharebtn setImage:image forState:UIControlStateNormal];
+    sharebtn.showsTouchWhenHighlighted = YES;
+    sharebtn.frame = CGRectMake(0.0, 3.0, 30, 30);
+    [sharebtn addTarget:self action:@selector(shareBook:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithCustomView:sharebtn];
+    self.navigationItem.rightBarButtonItem = rightbutton;
+    
+//    UIBarButtonItem *shareitem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"share.png"] style:UIBarButtonItemStylePlain target:self action:@selector(shareBook:)];
+//    self.navigationItem.rightBarButtonItem = shareitem;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -64,18 +74,9 @@
 }
 
 -(void)addBookView:(BBBook*)book{
-    M80AttributedLabel *label = [[M80AttributedLabel alloc]initWithFrame:CGRectZero];
-    label.lineSpacing = 5.0;
-//    [label appendImage:[UIImage imageNamed:@"user"
-//                        ] maxSize:CGSizeMake(50, 50)
-//                margin:UIEdgeInsetsZero
-//             alignment:M80ImageAlignmentCenter];
     
     NSString *text  = [self textForView];
-    [label appendText:text];
-    label.frame = CGRectInset(self.detailView.bounds,20,20);
-    [label setTextAlignment:kCTTextAlignmentNatural];
-    
+    [self.booknameOutlet setText:text];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         AVFile *file = self.book.photo;
         NSLog(@"%@ loaded", file);
@@ -85,13 +86,10 @@
             image = [UIImage imageWithData:imagedata];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [label appendImage:image maxSize:CGSizeMake(100, 100)
-                        margin:UIEdgeInsetsZero
-                     alignment:M80ImageAlignmentCenter];
+            [self.imageOutlet setImage:image];
+            [self.imageOutlet setNeedsDisplay];
         });
     });
-    
-    [self.detailView addSubview:label];
 }
 
 - (NSString *)textForView
@@ -135,7 +133,7 @@
 //    IBActionSheet *shareAs = [[IBActionSheet alloc] initWithTitle:@"分享这本书给..." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitlesArray:@[@"微信",@"QQ"]];
     //    [shareAs showInView:self.view];
 //    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];
-    NSString *shareText = [NSString stringWithFormat:@"来布莱克书店看看这本书：『%@』吧！请搜索app store，『布莱克书店』。（开发者偷懒，暂时没申请各个平台的第三方帐号。。）", self.book.bookname];
+    NSString *shareText = [NSString stringWithFormat:@"来马特里二手书店看看这本书：『%@』吧！请搜索app store，『马特里二手书店』。（偷懒，暂时没申请各个平台的第三方帐号。。）", self.book.bookname];
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@"54f44c92fd98c5c66b00017e"
                                       shareText:shareText
@@ -180,7 +178,7 @@
     if (buttonIndex == 1){
         [_book deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded){
-                UIAlertView *alertview = [[UIAlertView alloc]initWithTitle:@"删除成功" message:@"您的书已经不见啦" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView *alertview = [[UIAlertView alloc]initWithTitle:@"删除成功" message:@"您的书即将被删除，待会就不见啦" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alertview show];
             }
         }];

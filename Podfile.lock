@@ -1,0 +1,35 @@
+PODS:
+  - AVOSCloud (3.0.0)
+  - CocoaLumberjack (2.0.0):
+    - CocoaLumberjack/Default (= 2.0.0)
+    - CocoaLumberjack/Extensions (= 2.0.0)
+  - CocoaLumberjack/Core (2.0.0)
+  - CocoaLumberjack/Default (2.0.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.0.0):
+    - CocoaLumberjack/Default
+  - PonyDebugger (0.4.3):
+    - SocketRocket
+  - REFrostedViewController (2.4.7)
+  - SocketRocket (0.2.0)
+  - SVPullToRefresh (0.4.1)
+  - XLForm (2.1.0)
+
+DEPENDENCIES:
+  - AVOSCloud
+  - CocoaLumberjack
+  - PonyDebugger
+  - REFrostedViewController
+  - SVPullToRefresh
+  - XLForm
+
+SPEC CHECKSUMS:
+  AVOSCloud: 5f13496669a24bc5e2cd8d6dec546b54214cbee3
+  CocoaLumberjack: fd2b1031c6c4e0f08b5ea928ef677fa0a5de517d
+  PonyDebugger: 52f96f501df018dc2b7153fa18464b82553e700c
+  REFrostedViewController: 08870a24788191339608b80b2bd4fce549858f0d
+  SocketRocket: 6c9cfd1592bea82262b4283dcda3a7de166af3b6
+  SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
+  XLForm: 7d6855fe88df37b44ea00da80cc0cf3a945cfb1b
+
+COCOAPODS: 0.37.2
